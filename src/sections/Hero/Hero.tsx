@@ -11,14 +11,17 @@ export default function Hero() {
         {/* TEXTO */}
         <div className="flex-1 text-center md:text-left order-2 md:order-1">
           <h1 className="max-w-3xl mx-auto md:mx-0 text-[1.5rem] md:text-3xl font-black leading-snug">
-            Construindo experiências com
+            {t.hero.titleLine1}
             <span className="block text-[#a855f7] text-3xl md:text-4xl">
-              Códigos e Criatividade
+              {t.hero.titleLine2}
             </span>
           </h1>
 
           <h2 className="mt-4 text-lg md:text-xl font-bold">
-            Laísa Alb — <span className="text-[#a855f7]">Desenvolvedora Front-end</span>
+            Laísa Alb —{" "}
+            <span className="text-[#a855f7]">
+              {t.hero.role}
+            </span>
           </h2>
 
           <p className="mt-6 text-base md:text-lg text-gray-300 max-w-xl mx-auto md:mx-0 leading-relaxed">
@@ -30,21 +33,19 @@ export default function Hero() {
               href="#contact"
               className="inline-block px-10 py-3 rounded-full font-bold text-base bg-[#a855f7] hover:bg-[#9333ea] transition-all transform hover:scale-105 shadow-lg shadow-purple-500/20"
             >
-              Entre em Contato
+              {t.hero.cta}
             </a>
           </div>
         </div>
 
+        {/* FOTO */}
         <div className="flex-1 flex justify-center md:justify-end order-1 md:order-2">
-          <div className="relative group">
-
-            <div className="relative w-56 h-56 md:w-90 md:h-90 rounded-full border-4 border-white/10 overflow-hidden shadow-2xl">
-              <img
-                src={FotoLaisa}
-                alt="Foto de Laísa Albuquerque"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <div className="relative w-56 h-56 md:w-90 md:h-90 rounded-full border-4 border-white/10 overflow-hidden shadow-2xl">
+            <img
+              src={FotoLaisa}
+              alt={t.hero.imageAlt}
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 

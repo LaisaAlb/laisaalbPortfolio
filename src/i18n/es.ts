@@ -7,10 +7,12 @@ export const es = {
     contact: 'Contacto',
   },
   hero: {
-    title: "Hola, soy Laísa",
-    subtitle: "Desarrolladora Front-End",
+    titleLine1: "Construyendo experiencias con",
+    titleLine2: "Código y Creatividad",
+    role: "Desarrolladora Front-end",
     description:
-      "Entre líneas de código y decisiones de diseño, construyo interfaces pensadas para las personas.",
-    contact: "Contáctame",
+      "Desarrollo interfaces que combinan estética, usabilidad y rendimiento. Creo que un buen diseño comienza en los detalles y termina en la experiencia del usuario.",
+    cta: "Ponte en Contacto",
+    imageAlt: "Foto de Laísa Albuquerque",
   },
 }

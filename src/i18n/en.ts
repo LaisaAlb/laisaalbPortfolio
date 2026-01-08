@@ -7,11 +7,12 @@ export const en = {
     contact: 'Contact',
   },
   hero: {
-    title: "Hi, I'm Laísa",
-    subtitle: "Front-End Developer",
+    titleLine1: "Building experiences with",
+    titleLine2: "Code and Creativity",
+    role: "Front-end Developer",
     description:
-      "Between lines of code and design decisions, I build interfaces made for people.",
-    projects: "View projects",
-    contact: "Get in touch",
+      "I build interfaces that combine aesthetics, usability, and performance. I believe great design starts with details and ends with user experience.",
+    cta: "Get in Touch",
+    imageAlt: "Photo of Laisa Albuquerque",
   },
 }
