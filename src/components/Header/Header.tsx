@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher'
 import Logo from '../../assets/images/LAlogo.png'
@@ -6,60 +6,69 @@ import { useLanguage } from '../../contexts/LanguageContext'
 
 export default function Header() {
     const { t } = useLanguage()
+    const [scrolled, setScrolled] = useState(false)
 
-  const navItems = [
-    { label: t.nav.about, href: '#about' },
-    { label: t.nav.experience, href: '#experience' },
-    { label: t.nav.projects, href: '#projects' },
-    { label: t.nav.skills, href: '#skills' },
-    { label: t.nav.contact, href: '#contact' },
-  ]
+    const navItems = [
+        { label: t.nav.about, href: '#about' },
+        { label: t.nav.experience, href: '#experience' },
+        { label: t.nav.projects, href: '#projects' },
+        { label: t.nav.skills, href: '#skills' },
+        { label: t.nav.contact, href: '#contact' },
+    ]
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 10)
+        window.addEventListener('scroll', onScroll)
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+
     const [menuOpen, setMenuOpen] = useState(false)
-    const [activeLink, setActiveLink] = useState<string | null>(null)
+    const [activeLink, setActiveLink] = useState<string>('')
 
-    const handleLogoClick = () => {
-        setActiveLink(null)
-        setMenuOpen(false)
-    }
+    useEffect(() => {
+        setActiveLink(window.location.hash)
+    }, [])
 
     return (
-        <header className="
-        fixed top-0 w-full z-50
-        bg-bg-light dark:bg-bg-dark
-        border-b border-black/10 dark:border-white/10
-        transition-colors duration-300
-      ">
+        <header
+  className="
+    fixed top-0 w-full z-50
+    backdrop-blur-md
+    bg-white/70 dark:bg-zinc-900/70
+    border-b border-black/10 dark:border-white/10
+  "
+>
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
                 {/* Logo */}
-                <a href="#hero" onClick={handleLogoClick}>
-                    <img
-                        src={Logo}
-                        alt="Logo Laísa Albuquerque"
-                        className="h-10 w-auto cursor-pointer"
-                    />
+                <a href="#" onClick={() => setActiveLink('')}>
+                    <img src={Logo} alt="Logo" className="h-10" />
                 </a>
 
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex gap-2">
-                    {navItems.map(item => (
-                        <a
-                            key={item.href}
-                            href={item.href}
-                            onClick={() => setActiveLink(item.href)}
-                            className={`
-  px-4 py-2 rounded-md text-sm
-  text-black dark:text-white
-  font-semibold tracking-wide
-  transition-all duration-300
-  hover:bg-[#ae3eff]/80
-  ${activeLink === item.href ? 'bg-[#9c00fd] text-white' : ''}
-`}
+                    {navItems.map(item => {
+                        const isActive = activeLink === item.href
 
-                        >
-                            {item.label}
-                        </a>
-                    ))}
+                        return (
+                            <a
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => setActiveLink(item.href)}
+                                className={`
+                  px-4 py-2 text-sm font-semibold
+                  transition-colors duration-300
+
+                  ${isActive
+                                        ? 'text-[#9c00fd]'
+                                        : 'text-black dark:text-white hover:text-[#9c00fd]'
+                                    }
+                `}
+                            >
+                                {item.label}
+                            </a>
+                        )
+                    })}
                 </nav>
 
                 {/* Actions */}
@@ -67,11 +76,9 @@ export default function Header() {
                     <LanguageSwitcher />
                     <ThemeToggle />
 
-                    {/* Mobile Button */}
                     <button
-                        className="md:hidden text-white text-2xl"
+                        className="md:hidden text-black dark:text-white text-2xl"
                         onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Abrir menu"
                     >
                         {menuOpen ? '✕' : '☰'}
                     </button>
@@ -80,27 +87,33 @@ export default function Header() {
 
             {/* Mobile Menu */}
             {menuOpen && (
-                <div className="md:hidden bg-[#191919] border-t border-white/10">
+                <div className="md:hidden bg-bg-dark border-t border-white/10">
                     <nav className="flex flex-col px-6 py-4 gap-2">
-                        {navItems.map(item => (
-                            <a
-                                key={item.href}
-                                href={item.href}
-                                onClick={() => {
-                                    setActiveLink(item.href)
-                                    setMenuOpen(false)
-                                }}
-                                className={`
-                  px-4 py-3 rounded-md text-white
-                  font-semibold
-                  transition-all duration-300
-                  hover:bg-[#ae3eff]/80
-                  ${activeLink === item.href ? 'bg-[#9c00fd]' : ''}
-                `}
-                            >
-                                {item.label}
-                            </a>
-                        ))}
+                        {navItems.map(item => {
+                            const isActive = activeLink === item.href
+
+                            return (
+                                <a
+                                    key={item.href}
+                                    href={item.href}
+                                    onClick={() => {
+                                        setActiveLink(item.href)
+                                        setMenuOpen(false)
+                                    }}
+                                    className={`
+                    px-4 py-3 font-semibold
+                    transition-colors duration-300
+
+                    ${isActive
+                                            ? 'text-[#9c00fd]'
+                                            : 'text-white hover:text-[#ae3eff]'
+                                        }
+                  `}
+                                >
+                                    {item.label}
+                                </a>
+                            )
+                        })}
                     </nav>
                 </div>
             )}
