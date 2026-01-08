@@ -7,9 +7,10 @@ export const es = {
     contact: 'Contacto',
   },
   hero: {
-    title: 'Construyendo experiencias con',
-    highlight: 'código y creatividad',
-    role: 'Desarrolladora Front-End',
-    button: 'Contáctame',
+    title: "Hola, soy Laísa",
+    subtitle: "Desarrolladora Front-End",
+    description:
+      "Entre líneas de código y decisiones de diseño, construyo interfaces pensadas para las personas.",
+    contact: "Contáctame",
   },
 }

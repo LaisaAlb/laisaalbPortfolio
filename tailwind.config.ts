@@ -9,7 +9,7 @@ export default {
           light: '#FFFFFF',
         },
         surface: {
-          dark: '#120b2f',
+          dark: '#191919',
           light: '#ffffff',
         },
         primary: {
@@ -18,7 +18,7 @@ export default {
         },
         text: {
           dark: '#ffffff',
-          light: '#0f172a',
+          light: '#191919',
           mutedDark: '#c7c7d1',
           mutedLight: '#475569',
         },
