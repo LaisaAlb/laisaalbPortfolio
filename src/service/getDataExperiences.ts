@@ -1,6 +1,6 @@
-import DireitoAgil from "../assets/images/direitoAgil.png"
-import UniFavip from "../assets/images/unifavip.png"
-import G3 from "../assets/images/g3.png"
+import DireitoAgil from "../assets/images/logoExperiences/direitoAgil.png"
+import UniFavip from "../assets/images/logoExperiences/unifavip.png"
+import G3 from "../assets/images/logoExperiences/g3.png"
 
 export const experiences = [
   {
