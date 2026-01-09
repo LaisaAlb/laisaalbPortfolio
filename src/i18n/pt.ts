@@ -15,12 +15,24 @@ export const pt = {
     cta: "Entre em Contato",
     imageAlt: "Foto de Laísa Albuquerque",
   },
-   about: {
+  about: {
     greeting: "MUITO PRAZER,",
     title: "SOU",
     name: "LAÍSA ALBUQUERQUE",
-    p1: "Sou uma pessoa apaixonada pela vida e por tudo que me desafia a ir além. Antes de mais nada, prazer, sou Laísa. Gosto de praticar esportes, viver aventuras, ouvir música e assistir séries de suspense e ação. Acredito que a vida faz mais sentido quando é compartilhada com as pessoas ao nosso redor.",
-    p2: "Minhas habilidades vão além do que é técnico. Como pessoa, busco constantemente crescimento e evolução pessoal. Tento influenciar aqueles que convivem comigo a correr atrás de seus objetivos e sonhos — e faço isso da maneira que acredito ser possível: correndo atrás dos meus. Talvez, assim, me tornando exemplo no caminho.",
-    p3: "Hoje me sinto realizada por estar trilhando esse caminho, buscando conhecimento e evoluindo todos os dias. Sei que o futuro é promissor — e estou animada para tudo o que ainda está por vir.",
+    p1: "Sou uma pessoa apaixonada pela vida e por tudo que me desafia a ir além. Antes de mais nada, prazer, sou Laísa. Gosto de praticar esportes, viver aventuras, ouvir música e assistir séries de suspense e ação. Acredito que a vida faz mais sentido quando é compartilhada com as pessoas que amamos. Busco inspirar aqueles que convivem comigo a correr atrás de seus objetivos e sonhos — e faço isso da maneira que acredito ser possível: correndo atrás dos meus e, talvez, me tornando exemplo no caminho.",
+    p2: "Foi com essa mentalidade que encontrei na tecnologia um caminho onde pude unir paixão, aprendizado e evolução constante. Hoje me sinto realizada por estar trilhando essa jornada, buscando conhecimento todos os dias e me desafiando a crescer tanto profissional quanto pessoalmente. Acredito no potencial transformador da tecnologia e sei que o futuro é promissor — e estou animada para tudo o que ainda está por vir.",
+    cv: "Baixar CV",
   },
+  skills: {
+    title: "Habilidades",
+    subtitle: "Tecnologias, ferramentas e competências que aplico no dia a dia.",
+    technical: "Habilidades Técnicas",
+    soft: "Habilidades Interpessoais",
+    teamwork: "Trabalho em equipe",
+    communication: "Boa comunicação",
+    problemSolving: "Resolução de problemas",
+    responsibility: "Responsabilidade e organização",
+    creativity: "Criatividade e senso estético",
+  }
+
 }

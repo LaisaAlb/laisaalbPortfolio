@@ -15,12 +15,12 @@ export const es = {
     cta: "Ponte en Contacto",
     imageAlt: "Foto de Laísa Albuquerque",
   },
-   about: {
+  about: {
     greeting: "MUCHO GUSTO,",
     title: "SOY",
     name: "LAÍSA ALBUQUERQUE",
-    p1: "Soy una persona apasionada por la vida y por todo lo que me desafía a ir más allá. Antes que nada, mucho gusto, soy Laísa. Me gusta practicar deportes, vivir aventuras, escuchar música y ver series de suspenso y acción. Creo que la vida tiene más sentido cuando se comparte con las personas que nos rodean.",
-    p2: "Mis habilidades van más allá de lo técnico. Como persona, busco constantemente crecimiento y evolución personal. Intento inspirar a quienes me rodean a perseguir sus objetivos y sueños — y lo hago de la manera más honesta que conozco: persiguiendo los míos. Quizás, así, convirtiéndome en un ejemplo en el camino.",
-    p3: "Hoy me siento realizada por estar recorriendo este camino, aprendiendo y creciendo cada día. Sé que el futuro es prometedor — y estoy emocionada por todo lo que está por venir.",
+    p1: "Soy una persona apasionada por la vida y por todo lo que me desafía a ir más allá. Antes que nada, mucho gusto, soy Laísa. Me gusta practicar deportes, vivir aventuras, escuchar música y ver series de suspenso y acción. Creo que la vida tiene más sentido cuando se comparte con las personas que amamos. Busco inspirar a quienes me rodean a perseguir sus objetivos y sueños — y lo hago de la manera en la que realmente creo: persiguiendo los míos y, quizás, convirtiéndome en un ejemplo en el camino.",
+    p2: "Fue con esta mentalidad que encontré en la tecnología un camino donde pude unir pasión, aprendizaje y evolución constante. Hoy me siento realizada recorriendo esta jornada, buscando conocimiento cada día y desafiándome a crecer tanto a nivel profesional como personal. Creo en el poder transformador de la tecnología y sé que el futuro es prometedor — y estoy emocionada por todo lo que está por venir.",
+    cv: "Descargar CV",
   },
 }
