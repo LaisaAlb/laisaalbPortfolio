@@ -33,10 +33,7 @@ export default function Sidebar() {
     const element = document.getElementById(id)
     if (!element) return
 
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    })
+    element.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
   return (
@@ -84,7 +81,6 @@ export default function Sidebar() {
           md:hidden flex flex-col p-6
         `}
       >
-        {/* FECHAR */}
         <button
           onClick={() => setOpen(false)}
           className="absolute top-4 right-4 text-white"
@@ -92,7 +88,6 @@ export default function Sidebar() {
           <X className="w-6 h-6" />
         </button>
 
-        {/* MENU */}
         <div className="mt-12 flex-1">
           <nav className="flex flex-col gap-4">
             {links.map(link => (
@@ -115,7 +110,6 @@ export default function Sidebar() {
           </nav>
         </div>
 
-        {/* FOOTER MOBILE */}
         <div className="flex justify-between items-center pt-4 border-t border-zinc-800">
           <LanguageSwitcher />
           <ThemeToggle />
@@ -127,10 +121,11 @@ export default function Sidebar() {
         className="
           hidden md:flex fixed left-0 top-0 h-full w-20 md:w-64
           bg-zinc-900 border-r border-zinc-800
-          flex-col justify-between p-6
+          flex-col justify-between p-4
         "
       >
         <div className="flex flex-col gap-6">
+          {/* LOGO */}
           <div className="flex items-center">
             <img src={Logo} alt="Logo" className="w-10 h-10" />
             <span className="ml-3 font-bold text-purple-400">
@@ -138,7 +133,11 @@ export default function Sidebar() {
             </span>
           </div>
 
-          <nav className="flex flex-col gap-4">
+          {/* 🔹 DIVISOR (TRACINHO) */}
+          <div className="w-full h-px bg-zinc-800" />
+
+          {/* NAVEGAÇÃO */}
+          <nav className="flex flex-col gap-4 pt-2">
             {links.map(link => (
               <NavLink
                 key={link.path}
