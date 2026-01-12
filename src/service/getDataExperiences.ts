@@ -46,7 +46,7 @@ export const experiences = [
   {
     id: 2,
     company: "UniFavip Wyden — Projeto APAE | LTD",
-    role: "Product Owner",
+    role: "Tech Lead",
     type: "Aprendiz",
     period: "mar de 2025 - dez de 2025",
     location: "Caruaru, Pernambuco, Brasil · Remoto",

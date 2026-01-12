@@ -1,16 +1,10 @@
 import './App.css'
-import Header from './components/Header/Header'
-import Hero from './sections/Hero/Hero'
-import About from './sections/About/About'
+import AppRoutes from './routes/routes'
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-[#191919] flex flex-col">
-      <Header />
-      <Hero />
-      <About />
+    <div className="App bg-zinc-900">
+      <AppRoutes />
     </div>
   )
 }
-
-export default App

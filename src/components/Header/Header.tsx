@@ -1,122 +1,109 @@
-import { useState, useEffect } from 'react'
-import ThemeToggle from '../ThemeToggle/ThemeToggle'
-import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher'
-import Logo from '../../assets/images/LAlogo.png'
-import { useLanguage } from '../../contexts/LanguageContext'
+import { useLocation } from "react-router-dom"
+import { useLanguage } from "../../contexts/LanguageContext"
+import ThemeToggle from "../ThemeToggle/ThemeToggle"
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher"
+import Logo from "../../assets/images/LAlogo.png"
 
-export default function Header() {
-    const { t } = useLanguage()
-    const [scrolled, setScrolled] = useState(false)
 
-    const navItems = [
-        { label: t.nav.about, href: '#about' },
-        { label: t.nav.experience, href: '#experience' },
-        { label: t.nav.projects, href: '#projects' },
-        { label: t.nav.skills, href: '#skills' },
-        { label: t.nav.contact, href: '#contact' },
-    ]
+// Importando ícones do Lucide
+import { User, Award, Briefcase, Code, Mail, GraduationCap } from "lucide-react"
+import { SmileyWink } from "phosphor-react"
 
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 10)
-        window.addEventListener('scroll', onScroll)
-        return () => window.removeEventListener('scroll', onScroll)
-    }, [])
+type RoutePath =
+  | "/"
+  | "/about"
+  | "/skills"
+  | "/experience"
+  | "/projects"
+  | "/education"
+  | "/contact"
 
-    const [menuOpen, setMenuOpen] = useState(false)
-    const [activeLink, setActiveLink] = useState<string>('')
+type PageTitle = {
+  title: string
+  subtitle: string
+  icon: JSX.Element
+}
 
-    useEffect(() => {
-        setActiveLink(window.location.hash)
-    }, [])
+const titles: Record<RoutePath, PageTitle> = {
+  "/": {
+    title: "Olá, eu sou a Laísa",
+    subtitle: "Desenvolvedora Front-end",
+    icon: <SmileyWink
+      size={48}
+      weight="fill"
+      className="text-white"
+    />
+  },
+  "/about": {
+    title: "Sobre mim",
+    subtitle: "Quem sou eu e minha trajetória",
+    icon: <User className="w-10 h-10 text-white" />,
+  },
+  "/skills": {
+    title: "Habilidades",
+    subtitle: "Técnicas e interpessoais",
+    icon: <Award className="w-10 h-10 text-white" />,
+  },
+  "/experience": {
+    title: "Experiência",
+    subtitle: "Minha jornada profissional",
+    icon: <Briefcase className="w-10 h-10 text-white" />,
+  },
+  "/projects": {
+    title: "Projetos",
+    subtitle: "Alguns trabalhos que desenvolvi",
+    icon: <Code className="w-10 h-10 text-white" />,
+  },
+  "/education": {
+    title: "Formação & Certificados",
+    subtitle: "Minha trajetória acadêmica e cursos",
+    icon: <GraduationCap className="w-10 h-10 text-white" />,
+  },
+  "/contact": {
+    title: "Contato",
+    subtitle: "Vamos conversar?",
+    icon: <Mail className="w-10 h-10 text-white" />,
+  },
+}
 
-    return (
-        <header
-  className="
-    fixed top-0 w-full z-50
-    backdrop-blur-md
-    bg-white/70 dark:bg-zinc-900/70
-    border-b border-black/10 dark:border-white/10
-  "
->
-            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+export default function PageHeader() {
+  const { pathname } = useLocation()
+  const { t } = useLanguage()
 
-                {/* Logo */}
-                <a href="#" onClick={() => setActiveLink('')}>
-                    <img src={Logo} alt="Logo" className="h-10" />
-                </a>
+  const current = titles[pathname as RoutePath]
+  if (!current) return null
 
-                {/* Desktop Menu */}
-                <nav className="hidden md:flex gap-2">
-                    {navItems.map(item => {
-                        const isActive = activeLink === item.href
+  return (
+    <header className="border-b border-zinc-800 pb-4">
+      {/* 📱 MOBILE — apenas logo */}
+      <div className="flex items-center md:hidden">
+        <img
+          src={Logo}
+          alt="Logo"
+          className="w-10 h-10"
+        />
+      </div>
 
-                        return (
-                            <a
-                                key={item.href}
-                                href={item.href}
-                                onClick={() => setActiveLink(item.href)}
-                                className={`
-                  px-4 py-2 text-sm font-semibold
-                  transition-colors duration-300
+      {/* 💻 DESKTOP — header completo */}
+      <div className="hidden md:flex items-center justify-between gap-4">
+        <div className="flex items-center gap-3 text-white">
+          {current.icon}
+          <div>
+            <h1 className="text-3xl font-semibold">
+              {current.title}
+            </h1>
+            <p className="text-sm text-zinc-400">
+              {current.subtitle}
+            </p>
+          </div>
+        </div>
 
-                  ${isActive
-                                        ? 'text-[#9c00fd]'
-                                        : 'text-black dark:text-white hover:text-[#9c00fd]'
-                                    }
-                `}
-                            >
-                                {item.label}
-                            </a>
-                        )
-                    })}
-                </nav>
+        <div className="flex items-center gap-2">
+          <LanguageSwitcher />
+          <ThemeToggle />
+        </div>
+      </div>
+    </header>
+  )
 
-                {/* Actions */}
-                <div className="flex items-center gap-3">
-                    <LanguageSwitcher />
-                    <ThemeToggle />
-
-                    <button
-                        className="md:hidden text-black dark:text-white text-2xl"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                    >
-                        {menuOpen ? '✕' : '☰'}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile Menu */}
-            {menuOpen && (
-                <div className="md:hidden bg-bg-dark border-t border-white/10">
-                    <nav className="flex flex-col px-6 py-4 gap-2">
-                        {navItems.map(item => {
-                            const isActive = activeLink === item.href
-
-                            return (
-                                <a
-                                    key={item.href}
-                                    href={item.href}
-                                    onClick={() => {
-                                        setActiveLink(item.href)
-                                        setMenuOpen(false)
-                                    }}
-                                    className={`
-                    px-4 py-3 font-semibold
-                    transition-colors duration-300
-
-                    ${isActive
-                                            ? 'text-[#9c00fd]'
-                                            : 'text-white hover:text-[#ae3eff]'
-                                        }
-                  `}
-                                >
-                                    {item.label}
-                                </a>
-                            )
-                        })}
-                    </nav>
-                </div>
-            )}
-        </header>
-    )
 }

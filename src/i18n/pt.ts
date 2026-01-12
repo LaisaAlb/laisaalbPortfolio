@@ -7,7 +7,7 @@ export const pt = {
     contact: 'Contato',
   },
   hero: {
-    titleLine1: "Construindo experiências com",
+    titleLine1: "Construo experiências com",
     titleLine2: "Códigos e Criatividade",
     role: "Desenvolvedora Front-end",
     description:

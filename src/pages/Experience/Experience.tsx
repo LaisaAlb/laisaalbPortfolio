@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { Briefcase, ChevronDown } from "lucide-react"
 import { experiences } from "../../service/getDataExperiences"
+import MobileSectionTitle from "../../components/MobileSectionTitle/MobileSectionTitle"
 
 export default function ExperienceSection() {
   const [openId, setOpenId] = useState<number | null>(null)
@@ -11,10 +12,10 @@ export default function ExperienceSection() {
 
   return (
     <section id="experience" className="py-20 px-6 md:px-16">
-      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-[#9c00fd]">
-        Experiências
-      </h2>
-
+       <MobileSectionTitle
+        title="Experiência"
+        icon={<Briefcase className="w-10 h-10" />}
+      />
       <div className="max-w-5xl mx-auto space-y-6">
         {experiences.map((exp) => (
           <div

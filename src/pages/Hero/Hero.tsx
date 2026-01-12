@@ -1,11 +1,11 @@
 import { useLanguage } from "../../contexts/LanguageContext"
 import FotoLaisa from "../../assets/images/laisaFoto2.jpeg"
 
-export default function Hero() {
+export default function HeroSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="min-h-[90vh] flex items-center justify-center px-6 py-30 text-white">
+    <section id="hero" className="min-h-[90vh] flex items-center justify-center px-6 py-30 text-white">
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
 
         {/* TEXTO */}
@@ -30,7 +30,7 @@ export default function Hero() {
 
           <div className="mt-10 flex justify-center md:justify-start">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-block px-10 py-3 rounded-full font-bold text-base bg-[#a855f7] hover:bg-[#9333ea] transition-all transform hover:scale-105 shadow-lg shadow-purple-500/20"
             >
               {t.hero.cta}

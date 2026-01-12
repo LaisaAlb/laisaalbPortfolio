@@ -1,44 +1,55 @@
 import profileImg from '../../assets/images/laisaFoto1.png'
+import MobileSectionTitle from '../../components/MobileSectionTitle/MobileSectionTitle'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { Github, Linkedin, FileDown } from 'lucide-react'
+import { Github, Linkedin, FileDown, User } from 'lucide-react'
 
 export default function AboutSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="about" className="py-5 px-6 md:px-16">
-      <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-20">
-
+    <section id="about" className="px-6 md:px-16 py-15">
+      <MobileSectionTitle
+        title="Sobre mim"
+        icon={<User className="w-10 h-10" />}
+      />
+      <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16">
         {/* FOTO */}
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 hidden md:block">
           <img
             src={profileImg}
             alt={t.hero.imageAlt}
-            className="w-[280px] h-[380px] md:w-[320px] md:h-[420px] object-cover rounded-[40px]"
+            className="
+      w-[280px] h-[380px]
+      md:w-[320px] md:h-[420px]
+      object-cover
+      rounded-[40px]
+    "
           />
         </div>
 
-        {/* CONTEÚDO */}
-        <div className="text-white">
-          <h2 className="text-md tracking-[0.3em] mb-2">
+        <div className="text-white antialiased font-medium">
+
+          <h2 className="text-xs tracking-[0.25em] font-medium text-white mb-1">
             {t.about.greeting}
           </h2>
 
-          <h1 className="text-2xl md:text-3xl font-extrabold mb-4">
+          <h1 className="text-2xl md:text-4xl font-semibold leading-tight mb-3">
             {t.about.title}{' '}
-            <span className="text-[#9c00fd]">{t.about.name}</span>
+            <span className="text-[#9c00fd] font-semibold">
+              {t.about.name}
+            </span>
           </h1>
 
-          <p className="text-gray-300 leading-relaxed mb-4 max-w-xl">
+          <p className="text-sm text-zinc-300 leading-6 max-w-2xl mb-3 font-medium">
             {t.about.p1}
           </p>
 
-          <p className="text-gray-300 leading-relaxed mb-6 max-w-xl">
+          <p className="text-sm text-zinc-300 leading-6 max-w-2xl mb-5 font-medium">
             {t.about.p2}
           </p>
 
           {/* BOTÕES */}
-          <div className="flex flex-wrap gap-4 mt-6">
+          <div className="flex flex-wrap gap-3 mt-4">
 
             {/* CV */}
             <a
@@ -46,13 +57,14 @@ export default function AboutSection() {
               download
               className="
                 inline-flex items-center gap-2
-                px-6 py-3 rounded-xl
-                bg-[#9c00fd] text-white font-semibold
+                px-5 py-2.5 rounded-lg
+                bg-[#9c00fd] text-white
+                text-sm font-medium
                 hover:bg-[#7e00cc]
                 transition-colors
               "
             >
-              <FileDown size={18} />
+              <FileDown size={16} />
               {t.about.cv}
             </a>
 
@@ -63,14 +75,15 @@ export default function AboutSection() {
               rel="noopener noreferrer"
               className="
                 inline-flex items-center gap-2
-                px-6 py-3 rounded-xl
+                px-5 py-2.5 rounded-lg
                 border border-[#9c00fd]
-                text-[#9c00fd] font-semibold
+                text-[#9c00fd]
+                text-sm font-medium
                 hover:bg-[#9c00fd] hover:text-white
                 transition-colors
               "
             >
-              <Linkedin size={18} />
+              <Linkedin size={16} />
               LinkedIn
             </a>
 
@@ -81,14 +94,15 @@ export default function AboutSection() {
               rel="noopener noreferrer"
               className="
                 inline-flex items-center gap-2
-                px-6 py-3 rounded-xl
+                px-5 py-2.5 rounded-lg
                 border border-[#9c00fd]
-                text-[#9c00fd] font-semibold
+                text-[#9c00fd]
+                text-sm font-medium
                 hover:bg-[#9c00fd] hover:text-white
                 transition-colors
               "
             >
-              <Github size={18} />
+              <Github size={16} />
               GitHub
             </a>
 
