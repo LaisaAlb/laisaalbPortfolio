@@ -57,9 +57,10 @@ export default function SkillsSection() {
       className="py-24 px-6 md:px-16 bg-background text-foreground"
     >
       <MobileSectionTitle
-        title="Habilidades"
+        title={t.skills.title}
         icon={<Award className="w-10 h-10" />}
       />
+
       <div className="max-w-7xl mx-auto">
 
         {/* Content */}
@@ -77,13 +78,23 @@ export default function SkillsSection() {
               {technicalSkills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-4 py-2 rounded-full text-sm font-medium
-                  bg-primary/10 text-primary
-                  hover:bg-primary hover:text-white
-                  transition-colors duration-200"
+                  className="
+    px-4 py-2 rounded-full text-sm font-medium
+    bg-primary/10 text-primary
+
+    hover:bg-primary
+    hover:text-white
+    hover:-translate-y-1
+    hover:scale-105
+
+    transition-all duration-300
+  "
                 >
                   {skill}
                 </span>
+
+
+
               ))}
             </div>
           </div>

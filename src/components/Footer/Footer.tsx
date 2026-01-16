@@ -1,5 +1,6 @@
 import Logo from "../../assets/images/LAlogo.png"
 import { Download, Linkedin, Github } from "lucide-react"
+import SocialActions from "../SocialActions/SocialActions"
 
 export default function Footer() {
   return (
@@ -18,36 +19,7 @@ export default function Footer() {
         </div>
 
         {/* DIREITA – ÍCONES */}
-        <div className="flex items-center gap-4">
-          <a
-            href="/cv-laisa.pdf"
-            download
-            aria-label="Baixar CV"
-            className="footer-icon"
-          >
-            <Download size={18} color="#9c00fd" />
-          </a>
-
-          <a
-            href="https://linkedin.com/in/seu-linkedin"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="footer-icon"
-          >
-            <Linkedin size={18} color="#9c00fd" />
-          </a>
-
-          <a
-            href="https://github.com/seu-github"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="footer-icon"
-          >
-            <Github size={18} color="#9c00fd" />
-          </a>
-        </div>
+        <SocialActions showLabel={false} />
       </div>
 
       {/* COPYRIGHT */}
