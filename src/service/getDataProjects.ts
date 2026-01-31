@@ -1,6 +1,6 @@
 import {
   Baby,
-  Car,
+  Search,
   Brain,
   CreditCard,
   Wrench,
@@ -8,7 +8,7 @@ import {
 } from "lucide-react"
 
 import Apae from "../assets/images/projects/apae.png"
-import Veiculos from "../assets/images/projects/veiculos.png"
+import VistoriaSoftware from "../assets/images/projects/vistoriasSoftware.png"
 import UserPlatform from "../assets/images/projects/userPlatform.png"
 import Chamados from "../assets/images/projects/chamados.png"
 import ReactiveForms from "../assets/images/projects/reactiveForms.png"
@@ -27,13 +27,25 @@ export const projects = [
   },
   {
     id: 2,
-    title: "AUTODRIVE",
-    emoji: Car,
-    image: Veiculos,
+    title: "Vistoria Software",
+    emoji: Search,
+    image: VistoriaSoftware,
     description:
-      "Aplicação Full Stack para gerenciamento de veículos. Foi um desafio técnico para aprender e praticar minhas habilidades em desenvolvimento web full stack.",
-    techs: ["React", "CSS","TypeScript", "Node.js", "Prisma", "GIT | GitHub"],
-    github: "https://github.com/LaisaAlb/GerenciamentoDeVeiculosFront",
+      "Sistema web para gestão de vistorias veiculares, com controle de status, fluxo de aprovação, autenticação de usuários, relatórios e integração entre front-end e back-end.",
+    techs: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Hook Form",
+      "Zod",
+      "Node.js",
+      "Fastify",
+      "Prisma",
+      "PostgreSQL",
+      "JWT",
+      "Arquitetura em camadas",
+    ],
+    github: "https://github.com/LaisaAlb/vistorias-software",
   },
   {
     id: 3,

@@ -129,10 +129,19 @@ export const es = {
       techs: ["HTML", "CSS", "JavaScript", "Trabajo en equipo", "Accesibilidad", "GIT | GitHub"],
     },
     {
-      title: "AUTODRIVE",
+      title: "Vistorias Software",
       description:
-        "Aplicación Full Stack para la gestión de vehículos. Un desafío técnico para aprender y practicar mis habilidades en desarrollo web full stack.",
-      techs: ["React", "CSS", "TypeScript", "Node.js", "Prisma", "GIT | GitHub"],
+        "Sistema web para la gestión de inspecciones vehiculares, con flujo de aprobación, control de estados, autenticación de usuarios e integración entre front-end y back-end.",
+      techs: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "Prisma",
+        "PostgreSQL",
+        "JWT",
+        "Git | GitHub",
+      ],
     },
     {
       title: "AGENDA AI",
@@ -192,7 +201,7 @@ export const es = {
         institution: "Udemy",
         year: "2024",
         workload: "154h",
-        skills: ["Angular","TypeScript","Componentización","RxJS","Formularios Reactivos","Angular Router","Inyección de Dependencias","Buenas prácticas","Arquitectura Front-end","Angular Material"]
+        skills: ["Angular", "TypeScript", "Componentización", "RxJS", "Formularios Reactivos", "Angular Router", "Inyección de Dependencias", "Buenas prácticas", "Arquitectura Front-end", "Angular Material"]
       },
       {
         id: 2,
@@ -200,7 +209,7 @@ export const es = {
         institution: "DIO",
         year: "2025",
         workload: "41h",
-        skills: ["Lógica de programación","Algoritmos","Estructuras de datos","Buenas prácticas"]
+        skills: ["Lógica de programación", "Algoritmos", "Estructuras de datos", "Buenas prácticas"]
       },
       {
         id: 3,
@@ -208,7 +217,7 @@ export const es = {
         institution: "Udemy",
         year: "2025",
         workload: "18h",
-        skills: ["React","TypeScript","Hooks","Context API","Firebase","Componentización","Gestión de estado","Buenas prácticas","Arquitectura Front-end"]
+        skills: ["React", "TypeScript", "Hooks", "Context API", "Firebase", "Componentización", "Gestión de estado", "Buenas prácticas", "Arquitectura Front-end"]
       },
       {
         id: 4,
@@ -216,11 +225,11 @@ export const es = {
         institution: "Coursera",
         year: "2024",
         workload: "54h",
-        skills: ["Java","Programación Orientada a Objetos","Spring Boot","JPA / Hibernate","JDBC","SQL","UML","MySQL","MongoDB","Arquitectura Back-end","Buenas prácticas"]
+        skills: ["Java", "Programación Orientada a Objetos", "Spring Boot", "JPA / Hibernate", "JDBC", "SQL", "UML", "MySQL", "MongoDB", "Arquitectura Back-end", "Buenas prácticas"]
       }
     ]
-  }, 
-   contact: {
+  },
+  contact: {
     sectionTitle: "Contacto",
     subtitle1: "¿Te gustó lo que viste?",
     subtitle2: "Si te gustó mi trabajo y crees que podemos construir algo juntos, envíame un mensaje. Siempre estoy abierta a nuevos proyectos, colaboraciones y desafíos.",
@@ -238,8 +247,8 @@ export const es = {
       success: "¡Mensaje listo! Te redirigí a WhatsApp.",
       error: "Completa nombre, correo y mensaje."
     },
-     whatsappMessage: (name: string, email: string, phone: string, message: string) =>
-    `¡Hola! Me gustaría ponerme en contacto.\n\nNombre: ${name}\nEmail: ${email}\nTeléfono: ${phone || "-"}\n\nMensaje:\n${message}`,
+    whatsappMessage: (name: string, email: string, phone: string, message: string) =>
+      `¡Hola! Me gustaría ponerme en contacto.\n\nNombre: ${name}\nEmail: ${email}\nTeléfono: ${phone || "-"}\n\nMensaje:\n${message}`,
   },
   navigation: {
     title: "Laisa Albuquerque",
@@ -254,33 +263,33 @@ export const es = {
     },
   },
   pageHeader: {
-  home: {
-    title: "Hola, soy Laísa",
-    subtitle: "Desarrolladora Front-end",
+    home: {
+      title: "Hola, soy Laísa",
+      subtitle: "Desarrolladora Front-end",
+    },
+    about: {
+      title: "Sobre mí",
+      subtitle: "Quién soy y mi trayectoria",
+    },
+    skills: {
+      title: "Habilidades",
+      subtitle: "Técnicas e interpersonales",
+    },
+    experience: {
+      title: "Experiencia",
+      subtitle: "Mi recorrido profesional",
+    },
+    projects: {
+      title: "Proyectos",
+      subtitle: "Algunos trabajos que desarrollé",
+    },
+    education: {
+      title: "Formación y Certificados",
+      subtitle: "Mi trayectoria académica y cursos",
+    },
+    contact: {
+      title: "Contacto",
+      subtitle: "¿Hablamos?",
+    },
   },
-  about: {
-    title: "Sobre mí",
-    subtitle: "Quién soy y mi trayectoria",
-  },
-  skills: {
-    title: "Habilidades",
-    subtitle: "Técnicas e interpersonales",
-  },
-  experience: {
-    title: "Experiencia",
-    subtitle: "Mi recorrido profesional",
-  },
-  projects: {
-    title: "Proyectos",
-    subtitle: "Algunos trabajos que desarrollé",
-  },
-  education: {
-    title: "Formación y Certificados",
-    subtitle: "Mi trayectoria académica y cursos",
-  },
-  contact: {
-    title: "Contacto",
-    subtitle: "¿Hablamos?",
-  },
-},
 }

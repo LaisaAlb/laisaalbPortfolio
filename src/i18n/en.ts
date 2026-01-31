@@ -129,10 +129,19 @@ export const en = {
       techs: ["HTML", "CSS", "JavaScript", "Teamwork", "Accessibility", "GIT | GitHub"],
     },
     {
-      title: "AUTODRIVE",
+      title: "Vistorias Software",
       description:
-        "Full Stack application for vehicle management. A technical challenge to learn and practice my full stack web development skills.",
-      techs: ["React", "CSS", "TypeScript", "Node.js", "Prisma", "GIT | GitHub"],
+        "Web system for vehicle inspection management, featuring approval workflows, status control, user authentication, and front-end and back-end integration.",
+      techs: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "Prisma",
+        "PostgreSQL",
+        "JWT",
+        "Git | GitHub",
+      ],
     },
     {
       title: "AGENDA AI",

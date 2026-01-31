@@ -4,6 +4,7 @@ import { useLanguage } from "../contexts/LanguageContext"
 import ThemeToggle from "../components/ThemeToggle/ThemeToggle"
 import LanguageSwitcher from "../components/LanguageSwitcher/LanguageSwitcher"
 import Logo from "../assets/images/LAlogo.png"
+import { useIsMobile } from "../hooks/useIsMobile"
 
 import {
   Home,
@@ -30,7 +31,11 @@ export default function Sidebar() {
   const { t } = useLanguage()
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const isMobile = useIsMobile()
   const [open, setOpen] = useState(false)
+
+  // ✅ para o "ativo" no mobile (pois a rota continua "/")
+  const [activeKey, setActiveKey] = useState<LinkKey>("home")
 
   if (!t?.navigation) return null
   const nav = t.navigation
@@ -70,6 +75,16 @@ export default function Sidebar() {
     setOpen(false)
   }, [pathname])
 
+  // ✅ Quando entra em /contact (rota real), marca como ativo
+  useEffect(() => {
+    if (!isMobile) return
+    if (pathname === "/contact") setActiveKey("contact")
+    else if (pathname === "/") {
+      // mantém o activeKey atual (o observer abaixo ajusta)
+      // se preferir resetar: setActiveKey("home")
+    }
+  }, [isMobile, pathname])
+
   function scrollToSectionId(id: string) {
     const el = document.getElementById(id)
     if (!el) return false
@@ -88,6 +103,7 @@ export default function Sidebar() {
     scrollToSectionId(targetId)
   }
 
+  // ✅ Se foi para "/" com state.scrollTo, scrolla e seta ativo
   useEffect(() => {
     const state = (history.state?.usr ?? null) as { scrollTo?: string } | null
     const scrollTo = state?.scrollTo
@@ -95,9 +111,57 @@ export default function Sidebar() {
 
     requestAnimationFrame(() => {
       scrollToSectionId(scrollTo)
+      const maybeKey = (Object.keys(sectionIdByKey) as LinkKey[]).find(
+        (k) => sectionIdByKey[k] === scrollTo
+      )
+      if (maybeKey) setActiveKey(maybeKey)
       navigate(".", { replace: true, state: {} })
     })
-  }, [pathname, navigate])
+  }, [navigate, pathname])
+
+  // ✅ ATIVO AUTOMÁTICO NO MOBILE (quando rola a página)
+  useEffect(() => {
+    if (!isMobile) return
+    if (pathname !== "/") return
+
+    const entriesToObserve: Array<{ key: LinkKey; id: string; el: HTMLElement }> =
+      (Object.keys(sectionIdByKey) as LinkKey[])
+        .map((key) => {
+          const id = sectionIdByKey[key]
+          const el = document.getElementById(id)
+          if (!el) return null
+          return { key, id, el }
+        })
+        .filter(Boolean) as any
+
+    if (!entriesToObserve.length) return
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        // pega a seção mais "visível" no momento
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))
+
+        if (!visible.length) return
+
+        const id = visible[0].target.id
+        const key = (Object.keys(sectionIdByKey) as LinkKey[]).find(
+          (k) => sectionIdByKey[k] === id
+        )
+        if (key) setActiveKey(key)
+      },
+      {
+        // Ajuste fino: como você tem header fixo, empurra a "janela" um pouco
+        root: null,
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: [0.15, 0.25, 0.35, 0.5, 0.65],
+      }
+    )
+
+    entriesToObserve.forEach(({ el }) => obs.observe(el))
+    return () => obs.disconnect()
+  }, [isMobile, pathname])
 
   function NavItem({
     link,
@@ -111,10 +175,26 @@ export default function Sidebar() {
     const isContact = link.key === "contact"
 
     function handleClick(e: React.MouseEvent) {
+      // ✅ Contact sempre navega pra rota real
       if (isContact) {
+        setActiveKey("contact")
         onClick?.()
         return
       }
+
+      // ✅ No mobile, a home é página única: faz scroll e seta ativo
+      if (isMobile && pathname === "/") {
+        const id = sectionIdByKey[link.key as LinkKey]
+        const ok = scrollToSectionId(id)
+        if (ok) {
+          e.preventDefault()
+          setActiveKey(link.key as LinkKey)
+          onClick?.()
+          return
+        }
+      }
+
+      // ✅ Desktop / ou fallback: mantém sua lógica antiga
       if (pathname === "/") {
         const id = sectionIdByKey[link.key as LinkKey]
         const ok = scrollToSectionId(id)
@@ -127,6 +207,7 @@ export default function Sidebar() {
 
       if (isHome) {
         e.preventDefault()
+        if (isMobile) setActiveKey("home")
         goHomeAndScroll(sectionIdByKey.home)
         onClick?.()
         return
@@ -140,7 +221,12 @@ export default function Sidebar() {
         to={link.path}
         onClick={handleClick}
         className={({ isActive }) => {
-          const active = isActive
+          // ✅ Desktop: rota ativa
+          // ✅ Mobile: seção ativa (activeKey) enquanto estiver na home
+          const active =
+            isMobile && pathname === "/"
+              ? activeKey === (link.key as LinkKey)
+              : isActive
 
           return `
             group relative flex items-center gap-3
@@ -154,43 +240,50 @@ export default function Sidebar() {
           `
         }}
       >
-        {({ isActive }) => (
-          <>
-            <span
-              className={`
-                pointer-events-none
-                absolute inset-0 rounded-xl
-                transition-opacity
-                ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
-              `}
-              style={{
-                backgroundColor: isActive
-                  ? ("rgb(var(--purple-soft-hover))" as any)
-                  : ("rgb(var(--purple-soft))" as any),
-              }}
-              aria-hidden="true"
-            />
-            <span
-              className={`
-                pointer-events-none
-                absolute left-0 top-1/2 -translate-y-1/2
-                h-6 w-1 rounded-full
-                transition-opacity
-                ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
-              `}
-              style={{ backgroundColor: "rgb(var(--purple))" as any }}
-              aria-hidden="true"
-            />
+        {({ isActive }) => {
+          const active =
+            isMobile && pathname === "/"
+              ? activeKey === (link.key as LinkKey)
+              : isActive
 
-            <span className="relative z-10 flex items-center gap-3">
-              <Icon
-                className="w-5 h-5 transition-colors"
-                style={{ color: isActive ? "rgb(var(--purple))" : undefined }}
+          return (
+            <>
+              <span
+                className={`
+                  pointer-events-none
+                  absolute inset-0 rounded-xl
+                  transition-opacity
+                  ${active ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
+                `}
+                style={{
+                  backgroundColor: active
+                    ? ("rgb(var(--purple-soft-hover))" as any)
+                    : ("rgb(var(--purple-soft))" as any),
+                }}
+                aria-hidden="true"
               />
-              <span>{nav.links[link.key as LinkKey]}</span>
-            </span>
-          </>
-        )}
+              <span
+                className={`
+                  pointer-events-none
+                  absolute left-0 top-1/2 -translate-y-1/2
+                  h-6 w-1 rounded-full
+                  transition-opacity
+                  ${active ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
+                `}
+                style={{ backgroundColor: "rgb(var(--purple))" as any }}
+                aria-hidden="true"
+              />
+
+              <span className="relative z-10 flex items-center gap-3">
+                <Icon
+                  className="w-5 h-5 transition-colors"
+                  style={{ color: active ? "rgb(var(--purple))" : undefined }}
+                />
+                <span>{nav.links[link.key as LinkKey]}</span>
+              </span>
+            </>
+          )
+        }}
       </NavLink>
     )
   }
