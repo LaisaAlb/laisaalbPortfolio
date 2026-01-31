@@ -12,7 +12,7 @@ import Veiculos from "../assets/images/projects/veiculos.png"
 import UserPlatform from "../assets/images/projects/userPlatform.png"
 import Chamados from "../assets/images/projects/chamados.png"
 import ReactiveForms from "../assets/images/projects/reactiveForms.png"
-import AgendaAI from "../assets/images/projects/agendaAI.png"
+import AgendaAI from "../assets/images/projects/AgendaAI.png"
 
 export const projects = [
   {
