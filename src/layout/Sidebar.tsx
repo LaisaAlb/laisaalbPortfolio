@@ -97,8 +97,7 @@ export default function Sidebar() {
       scrollToSectionId(scrollTo)
       navigate(".", { replace: true, state: {} })
     })
-
-  }, [pathname])
+  }, [pathname, navigate])
 
   function NavItem({
     link,
@@ -109,8 +108,13 @@ export default function Sidebar() {
   }) {
     const Icon = link.icon
     const isHome = link.key === "home"
+    const isContact = link.key === "contact"
 
     function handleClick(e: React.MouseEvent) {
+      if (isContact) {
+        onClick?.()
+        return
+      }
       if (pathname === "/") {
         const id = sectionIdByKey[link.key as LinkKey]
         const ok = scrollToSectionId(id)
@@ -142,7 +146,11 @@ export default function Sidebar() {
             group relative flex items-center gap-3
             w-full rounded-xl px-3 py-2
             transition-colors
-            ${active ? "text-[rgb(var(--purple))] font-semibold" : "text-text-muted hover:text-[rgb(var(--purple))]"}
+            ${
+              active
+                ? "text-[rgb(var(--purple))] font-semibold"
+                : "text-text-muted hover:text-[rgb(var(--purple))]"
+            }
           `
         }}
       >
@@ -308,7 +316,9 @@ export default function Sidebar() {
           </nav>
         </div>
 
-        <span className="text-xs text-text-muted">© {new Date().getFullYear()}</span>
+        <span className="text-xs text-text-muted">
+          © {new Date().getFullYear()}
+        </span>
       </aside>
     </>
   )

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useLanguage } from "../../contexts/LanguageContext"
 import FotoLaisa from "../../assets/images/laisaFoto2.jpeg"
 
@@ -27,18 +28,14 @@ export default function HeroSection() {
         <div className="flex-1 text-center md:text-left order-2 md:order-1">
           <h1 className="max-w-3xl mx-auto md:mx-0 text-[1.5rem] md:text-3xl font-black leading-snug">
             {t.hero.titleLine1}{" "}
-            <span className="text-[rgb(var(--purple))]">
-              <span className="block text-3xl md:text-4xl">
-                {t.hero.titleLine2}
-              </span>
+            <span className="text-[rgb(var(--purple))] block text-3xl md:text-4xl">
+              {t.hero.titleLine2}
             </span>
           </h1>
 
           <h2 className="mt-4 text-lg md:text-xl font-bold">
             Laísa Alb —{" "}
-            <span className="text-[rgb(var(--purple))]">
-              {t.hero.role}
-            </span>
+            <span className="text-[rgb(var(--purple))]">{t.hero.role}</span>
           </h2>
 
           <p className="mt-6 text-base md:text-lg text-text-muted max-w-xl mx-auto md:mx-0 leading-relaxed">
@@ -46,8 +43,8 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-10 flex justify-center md:justify-start">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="
                 inline-flex items-center justify-center
                 px-10 py-3 rounded-full font-bold text-base
@@ -59,18 +56,10 @@ export default function HeroSection() {
                 focus:ring-offset-2
                 focus:ring-offset-[rgb(var(--color-bg))]
               "
-              style={{
-                backgroundColor: "rgb(var(--purple))",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(var(--purple-hover))"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(var(--purple))"
-              }}
+              style={{ backgroundColor: "rgb(var(--purple))" }}
             >
               {t.hero.cta}
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -86,7 +75,6 @@ export default function HeroSection() {
               className="pointer-events-none absolute inset-0 rounded-full ring-2"
               style={{ boxShadow: "0 0 0 2px rgba(168,85,247,0.25) inset" }}
             />
-
             <img
               src={FotoLaisa}
               alt={t.hero.imageAlt}
