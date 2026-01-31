@@ -4,14 +4,7 @@ import ThemeToggle from "../ThemeToggle/ThemeToggle"
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher"
 import Logo from "../../assets/images/LAlogo.png"
 
-import {
-  User,
-  Award,
-  Briefcase,
-  Code,
-  Mail,
-  GraduationCap,
-} from "lucide-react"
+import { User, Award, Briefcase, Code, Mail, GraduationCap } from "lucide-react"
 import { SmileyWink } from "phosphor-react"
 
 type RoutePath =
@@ -23,20 +16,15 @@ type RoutePath =
   | "/education"
   | "/contact"
 
+const iconClass = "w-10 h-10 text-[rgb(var(--purple))]"
 const icons: Record<RoutePath, JSX.Element> = {
-  "/": (
-    <SmileyWink
-      size={48}
-      weight="fill"
-      className="text-white"
-    />
-  ),
-  "/about": <User className="w-10 h-10 text-white" />,
-  "/skills": <Award className="w-10 h-10 text-white" />,
-  "/experience": <Briefcase className="w-10 h-10 text-white" />,
-  "/projects": <Code className="w-10 h-10 text-white" />,
-  "/education": <GraduationCap className="w-10 h-10 text-white" />,
-  "/contact": <Mail className="w-10 h-10 text-white" />,
+  "/": <SmileyWink size={48} weight="fill" className="text-[rgb(var(--purple))]" />,
+  "/about": <User className={iconClass} />,
+  "/skills": <Award className={iconClass} />,
+  "/experience": <Briefcase className={iconClass} />,
+  "/projects": <Code className={iconClass} />,
+  "/education": <GraduationCap className={iconClass} />,
+  "/contact": <Mail className={iconClass} />,
 }
 
 export default function PageHeader() {
@@ -61,25 +49,27 @@ export default function PageHeader() {
   const content = t.pageHeader[pageKey]
 
   return (
-    <header className="border-b border-zinc-800 pb-4">
+    <header
+      className="
+        border-b border-zinc-200/60 dark:border-zinc-800
+        pb-4
+      "
+    >
       {/* 📱 MOBILE — apenas logo */}
       <div className="flex items-center md:hidden">
-        <img
-          src={Logo}
-          alt="Logo"
-          className="w-10 h-10"
-        />
+        <img src={Logo} alt="Logo" className="w-10 h-10" />
       </div>
 
       {/* 💻 DESKTOP — header completo */}
       <div className="hidden md:flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3 text-white">
+        <div className="flex items-center gap-3 text-text">
           {icons[pathname as RoutePath]}
+
           <div>
-            <h1 className="text-3xl font-semibold">
+            <h1 className="text-3xl font-semibold text-text">
               {content.title}
             </h1>
-            <p className="text-sm text-zinc-400">
+            <p className="text-sm text-text-muted">
               {content.subtitle}
             </p>
           </div>

@@ -12,9 +12,9 @@ export default function MobileHome() {
     <div className="flex flex-col gap-20">
       <HeroSection/>
       <AboutSection />
-      <ProjectsSection />
       <SkillsSection />
       <ExperienceSection />
+      <ProjectsSection />
       <EducationSection />
       <ContactSection />
       <Footer/>

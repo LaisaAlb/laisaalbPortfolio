@@ -3,7 +3,7 @@ import AppRoutes from './routes/routes'
 
 export default function App() {
   return (
-    <div className="App bg-zinc-900">
+    <div className="min-h-screen bg-bg text-text">
       <AppRoutes />
     </div>
   )

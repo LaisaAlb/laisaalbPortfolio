@@ -237,7 +237,9 @@ export const es = {
     feedback: {
       success: "¡Mensaje listo! Te redirigí a WhatsApp.",
       error: "Completa nombre, correo y mensaje."
-    }
+    },
+     whatsappMessage: (name: string, email: string, phone: string, message: string) =>
+    `¡Hola! Me gustaría ponerme en contacto.\n\nNombre: ${name}\nEmail: ${email}\nTeléfono: ${phone || "-"}\n\nMensaje:\n${message}`,
   },
   navigation: {
     title: "Laisa Albuquerque",

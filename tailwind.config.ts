@@ -1,27 +1,18 @@
+/** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class',
-  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  darkMode: "class",
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        bg: {
-          dark: '#191919',
-          light: '#FFFFFF',
-        },
-        surface: {
-          dark: '#191919',
-          light: '#ffffff',
-        },
-        primary: {
-          DEFAULT: '#8b5cf6',
-          hover: '#7c3aed',
-        },
-        text: {
-          dark: '#ffffff',
-          light: '#191919',
-          mutedDark: '#c7c7d1',
-          mutedLight: '#475569',
-        },
+        bg: "rgb(var(--color-bg) / <alpha-value>)",
+        "bg-secondary": "rgb(var(--color-bg-secondary) / <alpha-value>)",
+
+        text: "rgb(var(--color-text) / <alpha-value>)",
+        "text-muted": "rgb(var(--color-text-muted) / <alpha-value>)",
+
+        // ✅ roxo fixo via vars também (opcional, mas ajuda)
+        primary: "rgb(var(--purple) / <alpha-value>)",
       },
     },
   },

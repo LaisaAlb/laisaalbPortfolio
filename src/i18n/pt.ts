@@ -252,33 +252,35 @@ export const pt = {
     },
   },
   pageHeader: {
-  home: {
-    title: "Olá, eu sou a Laísa",
-    subtitle: "Desenvolvedora Front-end",
-  },
-  about: {
-    title: "Sobre mim",
-    subtitle: "Quem sou eu e minha trajetória",
-  },
-  skills: {
-    title: "Habilidades",
-    subtitle: "Técnicas e interpessoais",
-  },
-  experience: {
-    title: "Experiência",
-    subtitle: "Minha jornada profissional",
-  },
-  projects: {
-    title: "Projetos",
-    subtitle: "Alguns trabalhos que desenvolvi",
-  },
-  education: {
-    title: "Formação & Certificados",
-    subtitle: "Minha trajetória acadêmica e cursos",
-  },
-  contact: {
-    title: "Contato",
-    subtitle: "Vamos conversar?",
-  },
-}
+    home: {
+      title: "Olá, eu sou a Laísa",
+      subtitle: "Desenvolvedora Front-end",
+    },
+    about: {
+      title: "Sobre mim",
+      subtitle: "Quem sou eu e minha trajetória",
+    },
+    skills: {
+      title: "Habilidades",
+      subtitle: "Técnicas e interpessoais",
+    },
+    experience: {
+      title: "Experiência",
+      subtitle: "Minha jornada profissional",
+    },
+    projects: {
+      title: "Projetos",
+      subtitle: "Alguns trabalhos que desenvolvi",
+    },
+    education: {
+      title: "Formação & Certificados",
+      subtitle: "Minha trajetória acadêmica e cursos",
+    },
+    contact: {
+      title: "Contato",
+      subtitle: "Vamos conversar?",
+      whatsappMessage: (name: string, email: string, phone: string, message: string) =>
+        `Olá! Gostaria de entrar em contato.\n\nNome: ${name}\nEmail: ${email}\nTelefone: ${phone || "-"}\n\nMensagem:\n${message}`,
+    },
+  }
 }
