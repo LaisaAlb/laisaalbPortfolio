@@ -17,25 +17,25 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route element={<MainLayout />}>
+        <Route path="/contact" element={<Contact />} />
+
         {isMobile ? (
           <>
-            {/* 📱 MOBILE — página única */}
             <Route path="/" element={<MobileHome />} />
             <Route path="*" element={<MobileHome />} />
           </>
         ) : (
           <>
-            {/* 💻 DESKTOP — rotas normais */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/education" element={<Education />} />
-            <Route path="/contact" element={<Contact />} />
           </>
         )}
       </Route>
     </Routes>
   )
 }
+
