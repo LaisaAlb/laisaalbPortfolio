@@ -122,6 +122,6 @@ Sou Desenvolvedora Front-End, estudante de Ciência da Computação, com experi�
 
 Se você gostou do meu trabalho ou quer trocar uma ideia, é só me chamar:
 
-- 🌐 [**Portfólio online**](#)
+- 🌐 [**Portfólio online**](https://laisaalbdev.vercel.app/)
 - 💼 [**Linkedin**](https://www.linkedin.com/in/laisaalbdev/)
 - 💻 [**GitHub**](https://github.com/LaisaAlb)
