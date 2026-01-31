@@ -15,7 +15,6 @@ export default function HeroSection() {
         bg-bg text-text
       "
     >
-      {/* brilho roxo sutil no fundo (não muda o roxo, só o bg) */}
       <div
         className="pointer-events-none absolute inset-0 -z-10 opacity-70 dark:opacity-80"
         style={{
@@ -25,12 +24,10 @@ export default function HeroSection() {
       />
 
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* TEXTO */}
         <div className="flex-1 text-center md:text-left order-2 md:order-1">
           <h1 className="max-w-3xl mx-auto md:mx-0 text-[1.5rem] md:text-3xl font-black leading-snug">
             {t.hero.titleLine1}{" "}
             <span className="text-[rgb(var(--purple))]">
-              {/* roxo fixo (não depende do tema) */}
               <span className="block text-3xl md:text-4xl">
                 {t.hero.titleLine2}
               </span>
@@ -77,7 +74,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* FOTO */}
         <div className="flex-1 flex justify-center md:justify-end order-1 md:order-2">
           <div
             className="
@@ -86,7 +82,6 @@ export default function HeroSection() {
               overflow-hidden shadow-2xl
             "
           >
-            {/* anel roxo sutil (funciona nos 2 temas) */}
             <div
               className="pointer-events-none absolute inset-0 rounded-full ring-2"
               style={{ boxShadow: "0 0 0 2px rgba(168,85,247,0.25) inset" }}

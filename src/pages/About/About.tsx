@@ -22,7 +22,6 @@ export default function AboutSection() {
       />
 
       <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16">
-        {/* FOTO */}
         <div className="flex-shrink-0 hidden md:block">
           <div className="relative rounded-[40px] overflow-hidden">
             <img
@@ -37,7 +36,6 @@ export default function AboutSection() {
               loading="lazy"
             />
 
-            {/* anel roxo sutil */}
             <div
               className="pointer-events-none absolute inset-0 rounded-[40px]"
               style={{
@@ -47,7 +45,6 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* TEXTO */}
         <div className="antialiased font-medium text-text">
           <h2 className="text-xs tracking-[0.25em] font-medium text-text-muted mb-1">
             {t.about.greeting}

@@ -22,7 +22,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <>
-      {/* CARD */}
       <div
         onClick={() => setOpen(true)}
         className="
@@ -48,11 +47,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      {/* MODAL */}
       {open && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center px-3"
-          // overlay adaptável ao tema
+
           style={{ backgroundColor: "rgb(0 0 0 / 0.55)" as any }}
           onClick={() => setOpen(false)}
         >
@@ -69,7 +67,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Top bar */}
             <div
               className="
                 sticky top-0 z-10 flex justify-end p-4
@@ -91,7 +88,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
             <div className="p-6 md:p-10">
               <div className="flex flex-col md:flex-row gap-10">
-                {/* Imagem */}
+
                 <div className="w-full md:w-1/2">
                   <div className="rounded-2xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800">
                     <img
@@ -102,7 +99,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   </div>
                 </div>
 
-                {/* Conteúdo */}
                 <div className="w-full md:w-1/2 flex flex-col text-text">
                   <h2 className="flex items-center gap-3 text-2xl md:text-3xl font-bold text-[rgb(var(--purple))]">
                     <Icon className="w-7 h-7" />
@@ -115,7 +111,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     </p>
                   )}
 
-                  {/* Features */}
                   {project.features?.length ? (
                     <div className="mt-8">
                       <h4 className="text-lg font-semibold mb-4 text-[rgb(var(--purple))]">
@@ -139,7 +134,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     </div>
                   ) : null}
 
-                  {/* Techs */}
                   <div className="mt-8 flex flex-wrap gap-2">
                     {project.techs.map((tech) => (
                       <span
@@ -158,7 +152,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     ))}
                   </div>
 
-                  {/* Github */}
                   {project.github && (
                     <a
                       href={project.github}

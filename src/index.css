@@ -3,27 +3,21 @@
 @tailwind utilities;
 
 :root {
-  /* BG / texto mudam com o tema */
   --color-bg: 255 255 255;
   --color-bg-secondary: 244 244 245;
 
   --color-text: 24 24 27;
   --color-text-muted: 82 82 91;
-
-  /* ✅ Roxo FIXO (não muda no tema) */
   --purple: 168 85 247;
   --purple-hover: 147 51 234;
 
-  /* ✅ Roxo com transparência */
   --purple-soft: 168 85 247 / 0.12;
   --purple-soft-hover: 168 85 247 / 0.18;
 
-  /* ✅ Variáveis específicas do MENU MOBILE */
-  --mobile-drawer-bg: 255 255 255;        /* branco no light */
-  --mobile-drawer-border: 228 228 231;    /* zinc-200 */
+  --mobile-drawer-bg: 255 255 255;        
+  --mobile-drawer-border: 228 228 231;   
 }
 
-/* dark: muda só BG e texto */
 html.dark {
   --color-bg: 9 9 11;
   --color-bg-secondary: 24 24 27;
@@ -31,13 +25,11 @@ html.dark {
   --color-text: 244 244 245;
   --color-text-muted: 161 161 170;
 
-  /* roxo continua igual (só ajusta transparência) */
   --purple-soft: 168 85 247 / 0.16;
   --purple-soft-hover: 168 85 247 / 0.22;
 
-  /* ✅ Mobile drawer no dark */
-  --mobile-drawer-bg: 24 24 27;         /* igual bg-secondary */
-  --mobile-drawer-border: 39 39 42;     /* zinc-800 */
+  --mobile-drawer-bg: 24 24 27;         
+  --mobile-drawer-border: 39 39 42;   
 }
 
 html, body {

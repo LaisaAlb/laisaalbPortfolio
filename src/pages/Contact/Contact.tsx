@@ -36,13 +36,11 @@ export default function ContactSection() {
       setFeedback("error")
       return
     }
-
-    // ✅ garante que nunca quebra, mesmo se algum idioma ainda não tiver whatsappMessage
     const whatsappMessageFn =
       typeof (t as any).whatsappMessage === "function"
         ? (t as any).whatsappMessage
         : (n: string, em: string, ph: string, msg: string) =>
-            `Olá! Gostaria de entrar em contato.\n\nNome: ${n}\nEmail: ${em}\nTelefone: ${ph || "-"}\n\nMensagem:\n${msg}`
+          `Olá! Gostaria de entrar em contato.\n\nNome: ${n}\nEmail: ${em}\nTelefone: ${ph || "-"}\n\nMensagem:\n${msg}`
 
     const text = whatsappMessageFn(name, email, phone, message)
 
@@ -77,7 +75,6 @@ export default function ContactSection() {
 
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* TEXTO */}
           <div className={cardBase}>
             <h3 className="font-semibold mb-3 text-text">{t.subtitle1}</h3>
 
@@ -98,10 +95,7 @@ export default function ContactSection() {
               <SocialActions />
             </div>
           </div>
-
-          {/* FORM */}
           <form onSubmit={handleSubmit} className={`${cardBase} flex flex-col gap-3`}>
-            {/* Nome */}
             <div className="relative">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
               <input
@@ -114,7 +108,6 @@ export default function ContactSection() {
               />
             </div>
 
-            {/* Email */}
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
               <input
@@ -126,8 +119,6 @@ export default function ContactSection() {
                 style={{ backgroundColor: "rgb(var(--color-bg) / 0.55)" as any }}
               />
             </div>
-
-            {/* Phone */}
             <div className="relative">
               <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
               <input
@@ -139,8 +130,6 @@ export default function ContactSection() {
                 style={{ backgroundColor: "rgb(var(--color-bg) / 0.55)" as any }}
               />
             </div>
-
-            {/* Message */}
             <div className="relative">
               <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-text-muted" />
               <textarea
@@ -153,7 +142,6 @@ export default function ContactSection() {
               />
             </div>
 
-            {/* Botão */}
             <button
               type="submit"
               className="

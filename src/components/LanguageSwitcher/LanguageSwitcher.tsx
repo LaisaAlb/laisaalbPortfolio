@@ -24,7 +24,6 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="relative">
-      {/* BOTÃO */}
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -44,7 +43,6 @@ export default function LanguageSwitcher() {
         <img src={selected.flag} alt={selected.label} className="w-7 h-5" />
       </button>
 
-      {/* DROPDOWN */}
       {open && (
         <ul
           className="
@@ -72,7 +70,6 @@ export default function LanguageSwitcher() {
                 select-none
               "
             >
-              {/* overlay de hover (não bloqueia clique) */}
               <div
                 className="pointer-events-none absolute inset-0 opacity-0 hover:opacity-100 transition-opacity"
                 style={{ backgroundColor: "rgb(var(--purple-soft))" as any }}

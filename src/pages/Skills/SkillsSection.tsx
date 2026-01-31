@@ -78,7 +78,6 @@ export default function SkillsSection() {
             </div>
           </div>
 
-          {/* Soft Skills */}
           <div className={cardBase}>
             <div className="flex items-center gap-3 mb-6">
               <Users className="text-[rgb(var(--purple))]" size={24} />

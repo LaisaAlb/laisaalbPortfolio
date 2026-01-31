@@ -8,7 +8,6 @@ type SocialActionsProps = {
 export default function SocialActions({ showLabel = true }: SocialActionsProps) {
   const { t, language } = useLanguage()
 
-  // Mapeamento de CV por idioma
   const cvByLanguage: Record<string, string> = {
     pt: "/cv/LaisaAlb-PT.pdf",
     en: "/cv/LaisaAlb-EN.pdf",
@@ -16,12 +15,10 @@ export default function SocialActions({ showLabel = true }: SocialActionsProps) 
 
   }
 
-  // Fallback para PT caso algo dê errado
   const cvLink = cvByLanguage[language] ?? cvByLanguage.pt
 
   return (
     <div className="flex flex-wrap gap-3 mt-4">
-      {/* CV */}
       <a
         href={cvLink}
         download
@@ -38,7 +35,6 @@ export default function SocialActions({ showLabel = true }: SocialActionsProps) 
         {showLabel && t.about.cv}
       </a>
 
-      {/* LinkedIn */}
       <a
         href="https://www.linkedin.com/in/laisaalbdev"
         target="_blank"
@@ -57,7 +53,6 @@ export default function SocialActions({ showLabel = true }: SocialActionsProps) 
         {showLabel && "LinkedIn"}
       </a>
 
-      {/* GitHub */}
       <a
         href="https://github.com/LaisaAlb"
         target="_blank"

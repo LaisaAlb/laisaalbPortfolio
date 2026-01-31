@@ -11,9 +11,9 @@ type ThemeContextValue = {
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 function applyThemeToHtml(theme: Theme) {
-  const root = document.documentElement // <html />
+  const root = document.documentElement 
   root.classList.toggle("dark", theme === "dark")
-  root.setAttribute("data-theme", theme) // opcional, mas útil
+  root.setAttribute("data-theme", theme) 
 }
 
 function getInitialTheme(): Theme {
@@ -36,9 +36,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }
 
   useEffect(() => {
-    // garante que ao carregar, a classe é aplicada
     applyThemeToHtml(theme)
-  }, []) // só uma vez (o state já vem inicializado)
+  }, []) 
 
   const value = useMemo(() => ({ theme, toggleTheme, setTheme }), [theme])
 

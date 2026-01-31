@@ -49,7 +49,6 @@ export default function Sidebar() {
     []
   )
 
-  // id real da seção (quando estiver na HOME e quiser scroll)
   const sectionIdByKey: Record<LinkKey, string> = {
     home: "hero",
     about: "about",
@@ -60,7 +59,6 @@ export default function Sidebar() {
     contact: "contact",
   }
 
-  // trava scroll do body quando menu mobile estiver aberto
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : ""
     return () => {
@@ -68,7 +66,6 @@ export default function Sidebar() {
     }
   }, [open])
 
-  // fecha menu ao mudar de rota
   useEffect(() => {
     setOpen(false)
   }, [pathname])
@@ -83,7 +80,6 @@ export default function Sidebar() {
     return true
   }
 
-  // 👉 navega para "/" e depois rola (resolve "Home não funciona fora da home")
   function goHomeAndScroll(targetId: string) {
     if (pathname !== "/") {
       navigate("/", { state: { scrollTo: targetId } })
@@ -92,19 +88,16 @@ export default function Sidebar() {
     scrollToSectionId(targetId)
   }
 
-  // ✅ quando chegar na home via navigate state, rola
   useEffect(() => {
     const state = (history.state?.usr ?? null) as { scrollTo?: string } | null
     const scrollTo = state?.scrollTo
     if (!scrollTo) return
 
-    // espera render do Outlet/home
     requestAnimationFrame(() => {
       scrollToSectionId(scrollTo)
-      // limpa state pra não rolar de novo ao voltar
       navigate(".", { replace: true, state: {} })
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [pathname])
 
   function NavItem({
@@ -118,8 +111,6 @@ export default function Sidebar() {
     const isHome = link.key === "home"
 
     function handleClick(e: React.MouseEvent) {
-      // Se estiver na HOME, tenta scroll por id (se existir)
-      // Se não existir (porque é outra página), segue navegação normal
       if (pathname === "/") {
         const id = sectionIdByKey[link.key as LinkKey]
         const ok = scrollToSectionId(id)
@@ -130,7 +121,6 @@ export default function Sidebar() {
         }
       }
 
-      // Home: fora da home, navega e rola
       if (isHome) {
         e.preventDefault()
         goHomeAndScroll(sectionIdByKey.home)
@@ -138,7 +128,6 @@ export default function Sidebar() {
         return
       }
 
-      // default: navega pra rota
       onClick?.()
     }
 
@@ -147,8 +136,6 @@ export default function Sidebar() {
         to={link.path}
         onClick={handleClick}
         className={({ isActive }) => {
-          // Se estiver na HOME, o active do NavLink só acende quando path === "/"
-          // então deixamos o visual do "home" funcionar, e os outros por rota.
           const active = isActive
 
           return `
@@ -161,7 +148,6 @@ export default function Sidebar() {
       >
         {({ isActive }) => (
           <>
-            {/* BG roxo (ativo/hover) — não bloqueia clique */}
             <span
               className={`
                 pointer-events-none
@@ -176,8 +162,6 @@ export default function Sidebar() {
               }}
               aria-hidden="true"
             />
-
-            {/* Barrinha roxa */}
             <span
               className={`
                 pointer-events-none
@@ -205,7 +189,6 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* ================= HEADER MOBILE ================= */}
       <header
         className="
           fixed top-0 left-0 right-0 z-50 md:hidden h-16 px-4

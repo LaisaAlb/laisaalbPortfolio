@@ -13,14 +13,12 @@ export default function EducationSection() {
   const { language } = useLanguage()
   const t = translations[language].education
 
-  // dados base (fixos / estrutura)
   const educationBase = getEducation()
   const certificates = getCertificates()
 
   const [openEducation, setOpenEducation] = useState<number | null>(1)
   const [openCertificate, setOpenCertificate] = useState<number | null>(null)
 
-  // ✅ merge: pega texto traduzido do i18n pelo id
   const education = useMemo(() => {
     const translatedById = new Map(
       (t.items ?? []).map((it: any) => [it.id, it])
@@ -57,7 +55,6 @@ export default function EducationSection() {
           {education.map((item: any) => {
             const isOpen = openEducation === item.id
 
-            // ✅ status pode vir "ongoing"/"completed" (en) ou pt antigo
             const normalizedStatus =
               item.status === "Concluído" ? "completed" :
               item.status === "Em andamento" ? "ongoing" :
@@ -97,8 +94,6 @@ export default function EducationSection() {
                     style={{ color: "rgb(var(--purple))" }}
                   />
                 </button>
-
-                {/* ✅ agora highlights vem do t.items (traduzido) */}
                 {isOpen && item.highlights?.length ? (
                   <div className="mt-3 text-sm text-text-muted space-y-1 px-3">
                     {item.highlights.map((topic: string, index: number) => (

@@ -1,5 +1,3 @@
-// ==================== TIPAGENS ====================
-
 export interface EducationItem {
     id: number
     degree: string
@@ -120,7 +118,6 @@ let certificatesData: CertificateItem[] = [
     }
 ]
 
-// ==================== GET / SET ====================
 
 export const getEducation = () => educationData
 export const setEducation = (data: EducationItem[]) => {

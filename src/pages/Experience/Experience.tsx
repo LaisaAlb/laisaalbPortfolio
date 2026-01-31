@@ -36,7 +36,7 @@ export default function ExperienceSection() {
                 transition-all
               "
             >
-              {/* HEADER */}
+
               <button
                 onClick={() => toggle(exp.id)}
                 className="
@@ -77,14 +77,11 @@ export default function ExperienceSection() {
                 />
               </button>
 
-              {/* CONTENT */}
               {isOpen && (
                 <div className="px-6 pb-6 space-y-6 animate-fadeIn text-text">
                   <p className="text-sm text-text-muted">
                     {data.location} · {data.type}
                   </p>
-
-                  {/* SOBRE */}
                   {data.about && (
                     <div>
                       <h4 className="text-sm font-semibold mb-2 text-[rgb(var(--purple))]">
@@ -96,7 +93,6 @@ export default function ExperienceSection() {
                     </div>
                   )}
 
-                  {/* ATIVIDADES */}
                   {data.activities && (
                     <div>
                       <h4 className="text-sm font-semibold mb-2 text-[rgb(var(--purple))]">
@@ -110,7 +106,6 @@ export default function ExperienceSection() {
                     </div>
                   )}
 
-                  {/* RESULTADOS */}
                   {data.results && (
                     <div>
                       <h4 className="text-sm font-semibold mb-2 text-[rgb(var(--purple))]">
@@ -124,7 +119,6 @@ export default function ExperienceSection() {
                     </div>
                   )}
 
-                  {/* TECNOLOGIAS */}
                   {data.technologies && (
                     <div>
                       <h4 className="text-sm font-semibold mb-2 text-[rgb(var(--purple))]">
@@ -150,7 +144,6 @@ export default function ExperienceSection() {
                     </div>
                   )}
 
-                  {/* HABILIDADES */}
                   {data.skills && (
                     <div>
                       <h4 className="text-sm font-semibold mb-2 text-text-muted">
